@@ -14,7 +14,7 @@ namespace Antex.FindServices
         {
             var output = new List<AntextStringItem>();
 
-            output.Add(new AntextStringItem(AntextStringItemType.Link, "http://data.com", 20));
+            
 
             return output;
 

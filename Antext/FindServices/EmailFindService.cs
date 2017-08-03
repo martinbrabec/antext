@@ -14,7 +14,7 @@ namespace Antex.FindServices
         {
             var output = new List<AntextStringItem>();
 
-            output.Add(new AntextStringItem(AntextStringItemType.Email, "martin@martin.cz", 0));
+            
 
             return output;
 

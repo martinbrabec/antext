@@ -11,7 +11,7 @@ namespace Antex.Debuger
     {
         static void Main(string[] args)
         {
-            string textToAnalyse = "";
+            string textToAnalyse = "Prodám Ford Focus kombi, r.v. 1999, k vidění na náměstí. Kdyžtak +420 777 888 999 nebo mail@mail.com. Více fotek je na https://auto.bazos.cz/inzerat/77860320/Ford-FOCUS-ST-20-ST-250ps.php";
 
             Antexter antexter = new Antexter(new AntextOptions()
             {
