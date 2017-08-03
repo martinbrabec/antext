@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antext", "Antex\Antext.csproj", "{3072F801-0EFD-4DAE-9982-B8BAA74BB2BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antext.Debuger", "Antex.Debuger\Antext.Debuger.csproj", "{5628B88E-76FC-4237-BE84-D7EF807FA90B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3072F801-0EFD-4DAE-9982-B8BAA74BB2BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3072F801-0EFD-4DAE-9982-B8BAA74BB2BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3072F801-0EFD-4DAE-9982-B8BAA74BB2BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3072F801-0EFD-4DAE-9982-B8BAA74BB2BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5628B88E-76FC-4237-BE84-D7EF807FA90B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5628B88E-76FC-4237-BE84-D7EF807FA90B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5628B88E-76FC-4237-BE84-D7EF807FA90B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5628B88E-76FC-4237-BE84-D7EF807FA90B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,9 @@
+*.suo
+*.user
+_ReSharper.*
+/packages
+bin
+obj
+.vs
+*.user
+/Tabloo.Web/static/photos
