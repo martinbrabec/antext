@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Antex\Antext.csproj">
+    <ProjectReference Include="..\Antext\Antext.csproj">
       <Project>{3072f801-0efd-4dae-9982-b8baa74bb2bc}</Project>
       <Name>Antext</Name>
     </ProjectReference>
