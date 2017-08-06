@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Antex.FindServices;
 using Antex.Objects;
 using Antext.FindServices;
+using Antext.Objects;
 
 namespace Antex
 {
@@ -26,7 +27,7 @@ namespace Antex
 
             if ((options.WhatToAnalyse & AntextStringItemType.PhoneNumber) == AntextStringItemType.PhoneNumber)
             {
-                PhoneFindService phoneFindService = new PhoneFindService();
+                PhoneFindService phoneFindService = new PhoneFindService(options.PhoneNumbersDefaultRegion);
 
                 outputAntex.FoundItems.AddRange(phoneFindService.GetItems(text));
             }
