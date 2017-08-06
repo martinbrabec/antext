@@ -1,6 +1,4 @@
-﻿using Antex.Objects;
-
-namespace Antext.Objects
+﻿namespace Antext.Objects
 {
     public class AntextOptions
     {

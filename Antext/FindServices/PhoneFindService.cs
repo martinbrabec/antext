@@ -2,8 +2,7 @@
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Schema;
-using Antex.FindServices;
-using Antex.Objects;
+using Antext.Objects;
 using PhoneNumbers;
 
 namespace Antext.FindServices

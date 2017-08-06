@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Antex.Objects;
+using Antext.Objects;
 
-namespace Antex.FindServices
+namespace Antext.FindServices
 {
     public interface IFindService
     {

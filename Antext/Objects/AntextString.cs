@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Antex.Objects
+namespace Antext.Objects
 {
     public class AntextString
     {

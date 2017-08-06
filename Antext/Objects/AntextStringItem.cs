@@ -1,4 +1,4 @@
-﻿namespace Antex.Objects
+﻿namespace Antext.Objects
 {
     public class AntextStringItem
     {

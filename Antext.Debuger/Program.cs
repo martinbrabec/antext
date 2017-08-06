@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Antex.Objects;
-using Antext.FindServices;
+﻿using Antext.FindServices;
 using Antext.Objects;
 
-namespace Antex.Debuger
+namespace Antext.Debuger
 {
     class Program
     {

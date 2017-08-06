@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Antex.Objects
+namespace Antext.Objects
 {
     [Flags]
     public enum AntextStringItemType
