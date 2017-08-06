@@ -1,4 +1,5 @@
-﻿using Antext.FindServices;
+﻿using System.Collections.Generic;
+using Antext.FindServices;
 using Antext.Objects;
 
 namespace Antext
@@ -7,34 +8,28 @@ namespace Antext
     {
         private AntextOptions options { get; set; }
 
+        private List<IAnalyzeService> analyzeServices;
+
+        public Antexter(params IAnalyzeService[] services)
+        {
+            
+        }
+
         public Antexter(AntextOptions options = null)
         {
             this.options = options ?? new AntextOptions();
         }
+
+
 
         public AntextString Analyze(string text)
         {
             var outputAntex = new AntextString();
             outputAntex.OriginalText = text;
 
-
-            if ((options.WhatToAnalyse & AntextStringItemType.PhoneNumber) == AntextStringItemType.PhoneNumber)
+            foreach (var analyzeService in analyzeServices)
             {
-                PhoneFindService phoneFindService = new PhoneFindService(options.PhoneNumbersDefaultRegion);
-
-                outputAntex.FoundItems.AddRange(phoneFindService.GetItems(text));
-            }
-
-            if ((options.WhatToAnalyse & AntextStringItemType.Email) == AntextStringItemType.Email)
-            {
-                EmailFindService emailFindService = new EmailFindService();
-                outputAntex.FoundItems.AddRange(emailFindService.GetItems(text));
-            }
-
-            if ((options.WhatToAnalyse & AntextStringItemType.Link) == AntextStringItemType.Link)
-            {
-                LinkFindService linkFindService = new LinkFindService();
-                outputAntex.FoundItems.AddRange(linkFindService.GetItems(text));
+                outputAntex.FoundItems.AddRange(analyzeService.GetAnalyzedItems(text));
             }
 
             return outputAntex;

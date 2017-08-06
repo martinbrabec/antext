@@ -9,6 +9,8 @@ namespace Antext.Debuger
         {
             string textToAnalyse = "Prodám Ford Focus kombi, r.v. 1999, k vidění na náměstí. Kdyžtak +420777888999 nebo mail@mail.com. Více fotek je na https://auto.bazos.cz/inzerat/77860320/Ford-FOCUS-ST-20-ST-250ps.php";
 
+            Antexter a = new Antexter();
+
             Antexter antexter = new Antexter(new AntextOptions()
             {
                 //WhatToAnalyse = AntexStringItemType.Email | AntexStringItemType.Link,
@@ -18,7 +20,9 @@ namespace Antext.Debuger
 
             AntextString result = antexter.Analyze(textToAnalyse);
 
-            var f = PhoneFindService.GetSupportedRegions();
+            
+
+            var f = PhoneAnalyzeService.GetSupportedRegions();
 
         }
     }

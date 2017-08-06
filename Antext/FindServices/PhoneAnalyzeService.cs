@@ -7,8 +7,10 @@ using PhoneNumbers;
 
 namespace Antext.FindServices
 {
-    public class PhoneFindService : IFindService
+    public class PhoneAnalyzeService : IAnalyzeService
     {
+        public AntextStringItemType Type { get { return AntextStringItemType.PhoneNumber; } }
+
         private string phoneRegexPattern = "(?:(\\d{1}))(\\d| |-){7,30}(\\d)";
         private string defaultRegion;
 
@@ -16,12 +18,12 @@ namespace Antext.FindServices
         /// Creates new instance of PhoneFindService.
         /// </summary>
         /// <param name="defaultRegion">Default region for phone number search. To get all supported region codes, use <see cref="GetSupportedRegions"/>.</param>
-        public PhoneFindService(string defaultRegion = "CZ")
+        public PhoneAnalyzeService(string defaultRegion = "CZ")
         {
             this.defaultRegion = defaultRegion;
         }
 
-        public List<AntextStringItem> GetItems(string text)
+        public List<AntextStringItem> GetAnalyzedItems(string text)
         {
             var output = new List<AntextStringItem>();
 

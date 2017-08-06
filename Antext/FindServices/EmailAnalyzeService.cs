@@ -5,16 +5,18 @@ using PhoneNumbers;
 
 namespace Antext.FindServices
 {
-    public class EmailFindService : IFindService
+    public class EmailAnalyzeService : IAnalyzeService
     {
+        public AntextStringItemType Type { get { return AntextStringItemType.Email;} }
+
         private string emailRegexPattern = "\\w+([-+.]\\w+)*(@|\\(at\\))(\\w+([-.]\\w+)|\\.\\w+([-.]\\w+))+";
 
-        public EmailFindService()
+        public EmailAnalyzeService()
         {
             
         }
 
-        public List<AntextStringItem> GetItems(string text)
+        public List<AntextStringItem> GetAnalyzedItems(string text)
         {
             var output = new List<AntextStringItem>();
 
@@ -37,5 +39,7 @@ namespace Antext.FindServices
             return output;
 
         }
+
+        
     }
 }

@@ -3,14 +3,16 @@ using Antext.Objects;
 
 namespace Antext.FindServices
 {
-    public class LinkFindService : IFindService
+    public class LinkAnalyzeService : IAnalyzeService
     {
-        public LinkFindService()
+        public AntextStringItemType Type { get { return AntextStringItemType.Link; } }
+
+        public LinkAnalyzeService()
         {
             
         }
 
-        public List<AntextStringItem> GetItems(string text)
+        public List<AntextStringItem> GetAnalyzedItems(string text)
         {
             var output = new List<AntextStringItem>();
 

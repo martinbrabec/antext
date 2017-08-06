@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antext", "Antext\Antext.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antext.Debuger", "Antext.Debuger\Antext.Debuger.csproj", "{5628B88E-76FC-4237-BE84-D7EF807FA90B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Antext.UnitTests", "Antext.UnitTests\Antext.UnitTests.csproj", "{1F16C5BB-CEBF-4F39-B0C3-FA167ECC1389}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5628B88E-76FC-4237-BE84-D7EF807FA90B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5628B88E-76FC-4237-BE84-D7EF807FA90B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5628B88E-76FC-4237-BE84-D7EF807FA90B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F16C5BB-CEBF-4F39-B0C3-FA167ECC1389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F16C5BB-CEBF-4F39-B0C3-FA167ECC1389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F16C5BB-CEBF-4F39-B0C3-FA167ECC1389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F16C5BB-CEBF-4F39-B0C3-FA167ECC1389}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

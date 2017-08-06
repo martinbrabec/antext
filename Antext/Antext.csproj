@@ -45,10 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Antexter.cs" />
-    <Compile Include="FindServices\IFindService.cs" />
-    <Compile Include="FindServices\EmailFindService.cs" />
-    <Compile Include="FindServices\LinkFindService.cs" />
-    <Compile Include="FindServices\PhoneFindService.cs" />
+    <Compile Include="FindServices\IAnalyzeService.cs" />
+    <Compile Include="FindServices\EmailAnalyzeService.cs" />
+    <Compile Include="FindServices\LinkAnalyzeService.cs" />
+    <Compile Include="FindServices\PhoneAnalyzeService.cs" />
     <Compile Include="Objects\AntextOptions.cs" />
     <Compile Include="Objects\AntextStringItem.cs" />
     <Compile Include="Objects\AntextStringItemType.cs" />
