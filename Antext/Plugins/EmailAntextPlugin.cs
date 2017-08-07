@@ -10,13 +10,12 @@ namespace Antext.Plugins
 
         private string emailRegexPattern = "(\\w+|[-+.])+(@|\\(at\\))((\\w|[.-])+(\\.\\w{2,10}){1})";
 
-
-        public List<AntextStringItem> Analyze(string text)
+        public List<AntextStringItem> Analyze(string originalText)
         {
             List<AntextStringItem> foundItems = new List<AntextStringItem>();
 
             // This should match any email separated by @ or (at)
-            var matches = Regex.Match(text, emailRegexPattern);
+            var matches = Regex.Match(originalText, emailRegexPattern);
             if (matches.Success)
             {
                 foreach (Capture match in matches.Captures)

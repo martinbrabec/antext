@@ -6,7 +6,6 @@ namespace Antext.Plugins
 {
     public class LinkAntextPlugin : IAntextPluginable
     {
-
         // Taken from https://stackoverflow.com/questions/6038061/regular-expression-to-find-urls-within-a-string
         /// <summary>
         /// 

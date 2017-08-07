@@ -1,5 +1,8 @@
 ﻿namespace Antext.Objects
 {
+    /// <summary>
+    /// Found item in given text.
+    /// </summary>
     public class AntextStringItem
     {
         public AntextStringItemType Type { get; private set; }
