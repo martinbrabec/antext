@@ -1,5 +1,5 @@
 # antext
-Antext is a c# text analizer library, which can find phone numbers (by default Czech Republic), emails and links in text. It can also replace them with fixed value. Phone number search uses libphonenumber() and regex. Email and link analizer uses just regex. 
+Antext is simple c# text analizer library, which can find phone numbers (by default Czech Republic), emails and links in text. It can also replace them with fixed value. Phone number search uses libphonenumber() and regex. Email and link analizer uses just regex. 
 
 # instalation
 
@@ -44,4 +44,6 @@ Email : sendmemail@gmail.com (SenDmEMail@gmail.com)
 PhoneNumber : +420 777 888 999 (777888999)
 Link : https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php
 ````
+
+If you need anything, you can contact me at info@martinbrabec.cz
 
