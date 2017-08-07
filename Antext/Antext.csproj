@@ -45,8 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Antexter.cs" />
-    <Compile Include="FindServices\AntextAnalyzer.cs" />
-    <Compile Include="FindServices\IAntextAnalyzer.cs" />
+    <Compile Include="AntextAnalyzer.cs" />
+    <Compile Include="IAntextAnalyzer.cs" />
     <Compile Include="Plugins\IAntextPluginable.cs" />
     <Compile Include="Plugins\EmailAntextPlugin.cs" />
     <Compile Include="Plugins\LinkAntextPlugine.cs" />

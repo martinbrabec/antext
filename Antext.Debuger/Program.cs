@@ -9,15 +9,27 @@ namespace Antext.Debuger
     {
         static void Main(string[] args)
         {
-            string textToAnalyse = "Prodám Ford Focus kombi, r.v. 1999, k vidění na náměstí. Kdyžtak 777888999 nebo MAIL@MA-IL.com. Více fotek je na https://auto.bazos.cz/inzerat/77860320/Ford-FOCUS-ST-20-ST-250ps.php";
+            // Prepare text to be analysed
+            string textToAnalyse = "Im selling Ford Focus combi, 1999,. If you want, call 777888999 or SenDmEMail@gmail.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php.";
 
-            Antexter a = new Antexter();
-            a.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(true)); 
-            a.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(true));
-            a.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(true));
+            // Create new instance of Antexter
+            Antexter antexter = new Antexter();
+
+            // Add EmailAntextPlugin for email analysis
+            antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(true));
+
+            // Add PhoneAntextPlugin for phonenumebrs analysis (uses libphonenumber)
+            antexter.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(true));
+
+            // Add LinkAntextPlugin for link analysis
+            antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(false));
 
 
-            AntextString result = a.Analyze(textToAnalyse);
+            // Run the analysis
+            AntextString result = antexter.Analyze(textToAnalyse);
+
+
+
 
             Console.WriteLine("GivenText: " + result.OriginalText);
             Console.WriteLine();

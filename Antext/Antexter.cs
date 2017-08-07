@@ -7,7 +7,6 @@ namespace Antext
 {
     public class Antexter
     {
-
         private List<IAntextAnalyzer> analyzeServices;
 
         public Antexter(params IAntextAnalyzer[] services)
