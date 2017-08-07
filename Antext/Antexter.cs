@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Antext.FindServices;
 using Antext.Objects;
 
@@ -6,31 +7,39 @@ namespace Antext
 {
     public class Antexter
     {
-        private AntextOptions options { get; set; }
 
-        private List<IAnalyzeService> analyzeServices;
+        private List<IAntextAnalyzer> analyzeServices;
 
-        public Antexter(params IAnalyzeService[] services)
+        public Antexter(params IAntextAnalyzer[] services)
         {
-            
-        }
-
-        public Antexter(AntextOptions options = null)
-        {
-            this.options = options ?? new AntextOptions();
+            this.analyzeServices = services?.ToList() ?? new List<IAntextAnalyzer>();
         }
 
 
+        public Antexter AddAnalyzer(IAntextAnalyzer analyzer)
+        {
+            if(analyzer != null)
+                analyzeServices.Add(analyzer);
 
-        public AntextString Analyze(string text)
+            return this;
+        }
+
+        public AntextString Analyze(string originalText)
         {
             var outputAntex = new AntextString();
-            outputAntex.OriginalText = text;
+            outputAntex.OriginalText = originalText;
+            outputAntex.FixedText = outputAntex.OriginalText;
+
 
             foreach (var analyzeService in analyzeServices)
             {
-                outputAntex.FoundItems.AddRange(analyzeService.GetAnalyzedItems(text));
+                AntextAnalyzeResult analyzedResult = analyzeService.Analyze(outputAntex.FixedText);
+
+                outputAntex.FoundItems.AddRange(analyzedResult.FoundItems);
+
+                outputAntex.FixedText = analyzedResult.FixedText ?? outputAntex.FixedText;
             }
+
 
             return outputAntex;
         }

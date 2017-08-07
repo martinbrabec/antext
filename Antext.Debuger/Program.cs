@@ -1,5 +1,7 @@
-﻿using Antext.FindServices;
+﻿using System;
+using Antext.FindServices;
 using Antext.Objects;
+using Antext.Plugins;
 
 namespace Antext.Debuger
 {
@@ -7,22 +9,29 @@ namespace Antext.Debuger
     {
         static void Main(string[] args)
         {
-            string textToAnalyse = "Prodám Ford Focus kombi, r.v. 1999, k vidění na náměstí. Kdyžtak +420777888999 nebo mail@mail.com. Více fotek je na https://auto.bazos.cz/inzerat/77860320/Ford-FOCUS-ST-20-ST-250ps.php";
+            string textToAnalyse = "Prodám Ford Focus kombi, r.v. 1999, k vidění na náměstí. Kdyžtak 777888999 nebo MAIL@MA-IL.com. Více fotek je na https://auto.bazos.cz/inzerat/77860320/Ford-FOCUS-ST-20-ST-250ps.php";
 
             Antexter a = new Antexter();
+            a.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(true)); 
+            a.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(true));
+            a.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(true));
 
-            Antexter antexter = new Antexter(new AntextOptions()
+
+            AntextString result = a.Analyze(textToAnalyse);
+
+            Console.WriteLine("GivenText: " + result.OriginalText);
+            Console.WriteLine();
+            Console.WriteLine("FixedText: " + result.FixedText);
+            Console.WriteLine();
+
+            Console.WriteLine("FOUND:");
+            foreach (var antextStringItem in result.FoundItems)
             {
-                //WhatToAnalyse = AntexStringItemType.Email | AntexStringItemType.Link,
-                WrapLinksText = "odkaz",
-                WrapLinksAHrefs = true
-            });
+                Console.WriteLine($"{antextStringItem.Type} : {antextStringItem.FixedValue} ({antextStringItem.OriginalValue})");
+            }
 
-            AntextString result = antexter.Analyze(textToAnalyse);
 
-            
-
-            var f = PhoneAnalyzeService.GetSupportedRegions();
+            var f = PhoneAntextPlugin.GetSupportedRegions();
 
         }
     }

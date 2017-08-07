@@ -1,43 +1,48 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Xml.Schema;
 using Antext.Objects;
 using PhoneNumbers;
 
-namespace Antext.FindServices
+namespace Antext.Plugins
 {
-    public class PhoneAnalyzeService : IAnalyzeService
+    public class PhoneAntextPlugin : IAntextPluginable
     {
+
         public AntextStringItemType Type { get { return AntextStringItemType.PhoneNumber; } }
 
         private string phoneRegexPattern = "(?:(\\d{1}))(\\d| |-){7,30}(\\d)";
         private string defaultRegion;
 
+        public PhoneAntextPlugin()
+        {
+            this.defaultRegion = "CZ";
+        }
+
         /// <summary>
         /// Creates new instance of PhoneFindService.
         /// </summary>
         /// <param name="defaultRegion">Default region for phone number search. To get all supported region codes, use <see cref="GetSupportedRegions"/>.</param>
-        public PhoneAnalyzeService(string defaultRegion = "CZ")
+        public PhoneAntextPlugin(string defaultRegion = "CZ")
         {
             this.defaultRegion = defaultRegion;
         }
 
-        public List<AntextStringItem> GetAnalyzedItems(string text)
+        public List<AntextStringItem> Analyze(string text)
         {
-            var output = new List<AntextStringItem>();
+            List<AntextStringItem> foundItems = new List<AntextStringItem>();
 
             // Try to use libphonenumber
             PhoneNumberUtil phoneUtils = PhoneNumberUtil.GetInstance();
-            List<PhoneNumberMatch> result = phoneUtils.FindNumbers(text, null, PhoneNumberUtil.Leniency.POSSIBLE, 100).ToList();
+            List<PhoneNumberMatch> findNumbersResult = phoneUtils.FindNumbers(text, null, PhoneNumberUtil.Leniency.POSSIBLE, 100).ToList();
 
-            foreach (PhoneNumberMatch phoneNumberMatch in result)
+            foreach (PhoneNumberMatch phoneNumberMatch in findNumbersResult)
             {
-                output.Add(new AntextStringItem(AntextStringItemType.PhoneNumber, phoneNumberMatch.Start, phoneUtils.Format(phoneNumberMatch.Number, PhoneNumberFormat.INTERNATIONAL)));
+                foundItems.Add(new AntextStringItem(AntextStringItemType.PhoneNumber, phoneNumberMatch.Start, phoneUtils.Format(phoneNumberMatch.Number, PhoneNumberFormat.INTERNATIONAL)));
             }
 
             // If nothing was found, try to use custom regex
-            if (!output.Any())
+            if (!foundItems.Any())
             {
                 // Nothing was found, try use regex
                 // This should match any sequence of numbers, separated by space or hypen, having 7-30 chars
@@ -53,13 +58,14 @@ namespace Antext.FindServices
                         if (fix.Length > 8 && fix.Length < 30)
                         {
                             PhoneNumber parsedPhone = phoneUtils.Parse(fix, defaultRegion);
-                            output.Add(new AntextStringItem(AntextStringItemType.PhoneNumber, match.Index, match.Value, (phoneUtils.Format(parsedPhone, PhoneNumberFormat.INTERNATIONAL))));
+                            foundItems.Add(new AntextStringItem(AntextStringItemType.PhoneNumber, match.Index, match.Value, (phoneUtils.Format(parsedPhone, PhoneNumberFormat.INTERNATIONAL))));
                         }
                     }
                 }
             }
 
-            return output;
+
+            return foundItems;
 
         }
 

@@ -5,7 +5,7 @@ namespace Antext.Objects
     public class AntextString
     {
         public string OriginalText { get; set; }
-        public string AnalyzedText { get; set; }
+        public string FixedText { get; set; }
 
         public List<AntextStringItem> FoundItems { get; set; }
 

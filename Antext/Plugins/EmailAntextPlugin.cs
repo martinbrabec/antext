@@ -1,24 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Antext.Objects;
-using PhoneNumbers;
 
-namespace Antext.FindServices
+namespace Antext.Plugins
 {
-    public class EmailAnalyzeService : IAnalyzeService
+    public class EmailAntextPlugin : IAntextPluginable
     {
         public AntextStringItemType Type { get { return AntextStringItemType.Email;} }
 
-        private string emailRegexPattern = "\\w+([-+.]\\w+)*(@|\\(at\\))(\\w+([-.]\\w+)|\\.\\w+([-.]\\w+))+";
+        private string emailRegexPattern = "(\\w+|[-+.])+(@|\\(at\\))((\\w|[.-])+(\\.\\w{2,10}){1})";
 
-        public EmailAnalyzeService()
-        {
-            
-        }
 
-        public List<AntextStringItem> GetAnalyzedItems(string text)
+        public List<AntextStringItem> Analyze(string text)
         {
-            var output = new List<AntextStringItem>();
+            List<AntextStringItem> foundItems = new List<AntextStringItem>();
 
             // This should match any email separated by @ or (at)
             var matches = Regex.Match(text, emailRegexPattern);
@@ -31,15 +26,12 @@ namespace Antext.FindServices
                     // If fixed's string length match possible phone number length, try to fix it
                     if (email.Length > 4 && email.Length < 255)
                     {
-                        output.Add(new AntextStringItem(AntextStringItemType.Email, match.Index, match.Value, email));
+                        foundItems.Add(new AntextStringItem(AntextStringItemType.Email, match.Index, match.Value, email));
                     }
                 }
             }
 
-            return output;
-
+            return foundItems;
         }
-
-        
     }
 }

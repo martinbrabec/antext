@@ -45,11 +45,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Antexter.cs" />
-    <Compile Include="FindServices\IAnalyzeService.cs" />
-    <Compile Include="FindServices\EmailAnalyzeService.cs" />
-    <Compile Include="FindServices\LinkAnalyzeService.cs" />
-    <Compile Include="FindServices\PhoneAnalyzeService.cs" />
-    <Compile Include="Objects\AntextOptions.cs" />
+    <Compile Include="FindServices\AntextAnalyzer.cs" />
+    <Compile Include="FindServices\IAntextAnalyzer.cs" />
+    <Compile Include="Plugins\IAntextPluginable.cs" />
+    <Compile Include="Plugins\EmailAntextPlugin.cs" />
+    <Compile Include="Plugins\LinkAntextPlugine.cs" />
+    <Compile Include="Plugins\PhoneAntextPlugin.cs" />
+    <Compile Include="Objects\AntextAnalyzeResult.cs" />
     <Compile Include="Objects\AntextStringItem.cs" />
     <Compile Include="Objects\AntextStringItemType.cs" />
     <Compile Include="Objects\AntextString.cs" />
@@ -58,6 +60,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
