@@ -3,7 +3,7 @@ Antext is simple c# text analizer library, which can find phone numbers (by defa
 
 # instalation
 
-You can install it from NUGET from https://www.nuget.org/packages/Antext/ 
+You can install it as NUGET package from https://www.nuget.org/packages/Antext/ 
 
 # usage
 
