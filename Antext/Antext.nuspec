@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>Antext</id>
-    <version>0.0.2.0</version>
+    <version>0.0.2.1</version>
     <title>Antext - text analyzer</title>
     <authors>Martin Brabec</authors>
     <owners>Martin Brabec</owners>
     <projectUrl>https://github.com/martinbrabec/antext</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Antext is text anaylze tool, which can analyze text and retrieve phone numbers, emails and links from it.</description>
-    <releaseNotes>Initialization!</releaseNotes>
+    <releaseNotes>Added ability to wrap found items in given mask.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>text analysis</tags>
   </metadata>

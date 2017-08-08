@@ -21,7 +21,7 @@ namespace Antext.Debuger
             antexter.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(true));
 
             // Add LinkAntextPlugin for link analysis
-            antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(false));
+            antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(false, wrapMask: "<a href=\"{0}\">link</a>"));
 
 
             // Run the analysis
