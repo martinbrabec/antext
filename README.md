@@ -11,19 +11,25 @@ Usage is really simple
 
 ```csharp
 // Prepare text to be analysed
-string textToAnalyse = "Im selling Ford Focus combi, 1999,. If you want, call 777888999 or SenDmEMail@gmail.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-1999-85kw.php.";
+string textToAnalyse = "Im selling Ford Focus combi, 1999,. If you want, call 777888999 or 313313313 or SenDmEMail@gmail.com. Alternatively myMail@google.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php. <script>alert('hi');</script>";
 
 // Create new instance of Antexter
 Antexter antexter = new Antexter();
 
+
+// Add HtmlTagPlugin for html tags analysis. Found tags are deduplicated. 
+// Revising in this case means removing. (OriginalValue will be replaced with empty string)
+antexter.AddAnalyzer(new AntextAnalyzer<HtmlTagAntextPlugin>(reviseOriginalText: true));
+
 // Add EmailAntextPlugin for email analysis
-antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(true));
+antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(reviseOriginalText: true)); 
 
 // Add PhoneAntextPlugin for phonenumebrs analysis (uses libphonenumber)
-antexter.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(true));
+antexter.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(reviseOriginalText: true));
 
-// Add LinkAntextPlugin for link analysis and sets wrapMask for wrapping found items
-antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(false, wrapMask: "<a href=\"{0}\">link</a>")));
+// Add LinkAntextPlugin for link analysis
+// Make sure to add this plugin AFTER HtmlTagPlugin, so your wrapped links are not replaced
+antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(reviseOriginalText: false, wrapMask: "<a href=\"{0}\">link</a>"));
 
 
 // Run the analysis
@@ -34,15 +40,20 @@ The code above will give following result in AntextString object.
 
 ````
 ORIGINAL TEXT
-Im selling Ford Focus combi, 1999,. If you want, call 777888999 or SenDmEMail@gmail.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php.
+Im selling Ford Focus combi, 1999,. If you want, call 777888999 or 313313313 or SenDmEMail@gmail.com. Alternatively myMail@google.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php. <script>alert('hi');</script>hp.
 
 REVISED TEXT
-Im selling Ford Focus combi, 1999,. If you want, call +420 777 888 999 or sendmemail@gmail.com. More photos on <a href="https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php">link</a>.
+Im selling Ford Focus combi, 1999,. If you want, call +420 777 888 999 or +420 313 313 313 or sendmemail@gmail.com. Alternatively mymail@google.com. More photos on <a href="https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php">link</a>. alert('hi');
+
 
 FOUND ITEMS
+HtmlTag :  (<script>)
+HtmlTag :  (</script>)
 Email : sendmemail@gmail.com (SenDmEMail@gmail.com)
+Email : mymail@google.com (myMail@google.com)
 PhoneNumber : +420 777 888 999 (777888999)
-Link : https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php
+PhoneNumber : +420 313 313 313 (313313313)
+Link : https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php (https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php)
 ````
 
 If you need anything, you can contact me at info@martinbrabec.cz
