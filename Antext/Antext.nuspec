@@ -2,14 +2,18 @@
 <package >
   <metadata>
     <id>Antext</id>
-    <version>0.0.2.3</version>
+    <version>0.0.2.4</version>
     <title>Antext - text analyzer</title>
     <authors>Martin Brabec</authors>
     <owners>Martin Brabec</owners>
     <projectUrl>https://github.com/martinbrabec/antext</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Antext is text anaylze tool, which can analyze text and retrieve phone numbers, emails and links from it.</description>
-    <releaseNotes>Added ability to wrap found items in given mask.</releaseNotes>
+    <releaseNotes>
+	1. Added HtmlTagPlugin.
+	2. Fix for a bug when multiple matches were found.
+	3. Refactoring
+</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>text analysis</tags>
   </metadata>

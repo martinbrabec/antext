@@ -14,17 +14,19 @@ namespace Antext.Debuger
             // Create new instance of Antexter
             Antexter antexter = new Antexter();
 
-            // Add HtmlTag for html tags analysis (following line will remove html tags)
-            antexter.AddAnalyzer(new AntextAnalyzer<HtmlTagAntextPlugin>(true));
+
+            // Add HtmlTagPlugin for html tags analysis. FOund tags are deduplicated. 
+            // Revising in this case means removing. (OriginalValue will be replaced with empty string)
+            antexter.AddAnalyzer(new AntextAnalyzer<HtmlTagAntextPlugin>(reviseOriginalText: true));
 
             // Add EmailAntextPlugin for email analysis
-            antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(true)); 
+            antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(reviseOriginalText: true));
 
             // Add PhoneAntextPlugin for phonenumebrs analysis (uses libphonenumber)
-            antexter.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(true));
+            antexter.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(reviseOriginalText: true));
 
             // Add LinkAntextPlugin for link analysis
-            antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(false, wrapMask: "<a href=\"{0}\">link</a>"));
+            antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(reviseOriginalText: false, wrapMask: "<a href=\"{0}\">link</a>"));
 
 
             // Run the analysis
