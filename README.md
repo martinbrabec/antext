@@ -22,8 +22,8 @@ antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(true));
 // Add PhoneAntextPlugin for phonenumebrs analysis (uses libphonenumber)
 antexter.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(true));
 
-// Add LinkAntextPlugin for link analysis
-antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(false));
+// Add LinkAntextPlugin for link analysis and sets wrapMask for wrapping found items
+antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(false, wrapMask: "<a href=\"{0}\">link</a>")));
 
 
 // Run the analysis
@@ -37,7 +37,7 @@ ORIGINAL TEXT
 Im selling Ford Focus combi, 1999,. If you want, call 777888999 or SenDmEMail@gmail.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php.
 
 FIXED TEXT
-Im selling Ford Focus combi, 1999,. If you want, call +420 777 888 999 or sendmemail@gmail.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php.
+Im selling Ford Focus combi, 1999,. If you want, call +420 777 888 999 or sendmemail@gmail.com. More photos on <a href="https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php">link</a>.
 
 FOUND ITEMS
 Email : sendmemail@gmail.com (SenDmEMail@gmail.com)
