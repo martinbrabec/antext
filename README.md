@@ -36,7 +36,7 @@ The code above will give following result in AntextString object.
 ORIGINAL TEXT
 Im selling Ford Focus combi, 1999,. If you want, call 777888999 or SenDmEMail@gmail.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php.
 
-FIXED TEXT
+REVISED TEXT
 Im selling Ford Focus combi, 1999,. If you want, call +420 777 888 999 or sendmemail@gmail.com. More photos on <a href="https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php">link</a>.
 
 FOUND ITEMS
