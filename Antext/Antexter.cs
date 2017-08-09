@@ -35,16 +35,16 @@ namespace Antext
         {
             var outputAntex = new AntextString();
             outputAntex.OriginalText = originalText;
-            outputAntex.FixedText = outputAntex.OriginalText;
+            outputAntex.RevisedText = outputAntex.OriginalText;
 
 
             foreach (var analyzeService in analyzeServices)
             {
-                AntextAnalyzeResult analyzedResult = analyzeService.Analyze(outputAntex.FixedText);
+                AntextAnalyzeResult analyzedResult = analyzeService.Analyze(outputAntex.RevisedText);
 
                 outputAntex.FoundItems.AddRange(analyzedResult.FoundItems);
 
-                outputAntex.FixedText = analyzedResult.FixedText ?? outputAntex.FixedText;
+                outputAntex.RevisedText = analyzedResult.RevisedText ?? outputAntex.RevisedText;
             }
 
 

@@ -10,9 +10,9 @@ namespace Antext.Objects
         public string OriginalText { get; set; }
 
         /// <summary>
-        /// Contains original text, where found items's original values are replaced with fixed ones.
+        /// Contains original text, where found items's original values are replaced with revised ones.
         /// </summary>
-        public string FixedText { get; set; }
+        public string RevisedText { get; set; }
 
         /// <summary>
         /// This collection contains found items in given original text.

@@ -15,7 +15,7 @@ namespace Antext.Debuger
             Antexter antexter = new Antexter();
 
             // Add EmailAntextPlugin for email analysis
-            antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(true));
+            antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(true)); 
 
             // Add PhoneAntextPlugin for phonenumebrs analysis (uses libphonenumber)
             antexter.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(true));
@@ -32,13 +32,13 @@ namespace Antext.Debuger
 
             Console.WriteLine("GivenText: " + result.OriginalText);
             Console.WriteLine();
-            Console.WriteLine("FixedText: " + result.FixedText);
+            Console.WriteLine("RevisedText: " + result.RevisedText);
             Console.WriteLine();
 
             Console.WriteLine("FOUND:");
             foreach (var antextStringItem in result.FoundItems)
             {
-                Console.WriteLine($"{antextStringItem.Type} : {antextStringItem.FixedValue} ({antextStringItem.OriginalValue})");
+                Console.WriteLine($"{antextStringItem.Type} : {antextStringItem.RevisedValue} ({antextStringItem.OriginalValue})");
             }
 
 

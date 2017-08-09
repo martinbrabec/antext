@@ -54,7 +54,7 @@ namespace Antext.Plugins
                         // Replace spaces or hypens if any
                         string fix = match.Value.Replace(" ", "").Replace("-", "");
 
-                        // If fixed's string length match possible phone number length, try to fix it
+                        // If revised's string length match possible phone number length, try to fix it
                         if (fix.Length > 8 && fix.Length < 30)
                         {
                             PhoneNumber parsedPhone = phoneUtils.Parse(fix, defaultRegion);

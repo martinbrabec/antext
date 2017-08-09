@@ -14,19 +14,19 @@ namespace Antext.Objects
             get { return foundItems; }
         }
 
-        private string fixedText;
+        private string revisedText;
         /// <summary>
-        /// Contains original text, where found items's original values are replaced with fixed ones.
+        /// Contains original text, where found items's original values are replaced with revised ones.
         /// </summary>
-        public string FixedText
+        public string RevisedText
         {
-            get { return fixedText; }
+            get { return revisedText; }
         }
 
-        public AntextAnalyzeResult(List<AntextStringItem> foundItems, string fixedText)
+        public AntextAnalyzeResult(List<AntextStringItem> foundItems, string revisedText)
         {
             this.foundItems = foundItems;
-            this.fixedText = fixedText;
+            this.revisedText = revisedText;
         }
 
     }

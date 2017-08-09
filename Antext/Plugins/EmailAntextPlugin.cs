@@ -22,7 +22,7 @@ namespace Antext.Plugins
                 {
                     string email = match.Value.Replace("(at)", "@").ToLower();
 
-                    // If fixed's string length match possible phone number length, try to fix it
+                    // If revised's string length match possible phone number length, try to fix it
                     if (email.Length > 4 && email.Length < 255)
                     {
                         foundItems.Add(new AntextStringItem(AntextStringItemType.Email, match.Index, match.Value, email));
