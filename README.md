@@ -17,7 +17,7 @@ string textToAnalyse = "Im selling Ford Focus combi, 1999,. If you want, call 77
 Antexter antexter = new Antexter();
 
 
-// Add HtmlTagPlugin for html tags analysis. FOund tags are deduplicated. 
+// Add HtmlTagPlugin for html tags analysis. Found tags are deduplicated. 
 // Revising in this case means removing. (OriginalValue will be replaced with empty string)
 antexter.AddAnalyzer(new AntextAnalyzer<HtmlTagAntextPlugin>(reviseOriginalText: true));
 
@@ -28,6 +28,7 @@ antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(reviseOriginalText: t
 antexter.AddAnalyzer(new AntextAnalyzer<PhoneAntextPlugin>(reviseOriginalText: true));
 
 // Add LinkAntextPlugin for link analysis
+// Make sure to add this plugin AFTER HtmlTagPlugin, so your wrapped links are not replaced
 antexter.AddAnalyzer(new AntextAnalyzer<LinkAntextPlugin>(reviseOriginalText: false, wrapMask: "<a href=\"{0}\">link</a>"));
 
 
