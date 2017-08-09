@@ -19,16 +19,24 @@ namespace Antext.Plugins
             List<AntextStringItem> foundItems = new List<AntextStringItem>();
 
             // This should match link 
-            var matches = Regex.Match(text, linkRegexPattern);
-            if (matches.Success)
+            var matches = Regex.Matches(text, linkRegexPattern);
+            foreach (Match match in matches)
             {
-                foreach (Capture match in matches.Captures)
-                { 
-                    if (match.Value.Length > 5 && match.Value.Length <= 2000)
-                    {
-                        foundItems.Add(new AntextStringItem(AntextStringItemType.Link, match.Index, match.Value, match.Value));
-                    }
+                if (match.Value.Length > 5 && match.Value.Length <= 2000)
+                {
+                    foundItems.Add(new AntextStringItem(AntextStringItemType.Link, match.Index, match.Value, match.Value));
                 }
+
+                //if (match.Success)
+                //{
+                //    foreach (Capture capture in match.Captures)
+                //    {
+                //        if (match.Value.Length > 5 && match.Value.Length <= 2000)
+                //        {
+                //            foundItems.Add(new AntextStringItem(AntextStringItemType.Link, match.Index, match.Value, match.Value));
+                //        }
+                //    }
+                //}
             }
 
             return foundItems;

@@ -49,6 +49,7 @@
     <Compile Include="IAntextAnalyzer.cs" />
     <Compile Include="Plugins\IAntextPluginable.cs" />
     <Compile Include="Plugins\EmailAntextPlugin.cs" />
+    <Compile Include="Plugins\HtmlTagAntextPlugin.cs" />
     <Compile Include="Plugins\LinkAntextPlugine.cs" />
     <Compile Include="Plugins\PhoneAntextPlugin.cs" />
     <Compile Include="Objects\AntextAnalyzeResult.cs" />

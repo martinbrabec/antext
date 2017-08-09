@@ -8,6 +8,7 @@ namespace Antext.Objects
         None = 0,
         Email = 1,
         PhoneNumber = 2,
-        Link = 4
+        Link = 4,
+        HtmlTag = 8
     }
 }

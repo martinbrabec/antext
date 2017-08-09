@@ -46,22 +46,35 @@ namespace Antext.Plugins
             {
                 // Nothing was found, try use regex
                 // This should match any sequence of numbers, separated by space or hypen, having 7-30 chars
-                var matches = Regex.Match(text, phoneRegexPattern);
-                if (matches.Success)
+                var matches = Regex.Matches(text, phoneRegexPattern);
+                foreach (Match match in matches)
                 {
-                    foreach (Capture match in matches.Captures)
-                    {
-                        // Replace spaces or hypens if any
-                        string fix = match.Value.Replace(" ", "").Replace("-", "");
+                    // Replace spaces or hypens if any
+                    string fix = match.Value.Replace(" ", "").Replace("-", "");
 
-                        // If revised's string length match possible phone number length, try to fix it
-                        if (fix.Length > 8 && fix.Length < 30)
-                        {
-                            PhoneNumber parsedPhone = phoneUtils.Parse(fix, defaultRegion);
-                            foundItems.Add(new AntextStringItem(AntextStringItemType.PhoneNumber, match.Index, match.Value, (phoneUtils.Format(parsedPhone, PhoneNumberFormat.INTERNATIONAL))));
-                        }
+                    // If revised's string length match possible phone number length, try to fix it
+                    if (fix.Length > 8 && fix.Length < 30)
+                    {
+                        PhoneNumber parsedPhone = phoneUtils.Parse(fix, defaultRegion);
+                        foundItems.Add(new AntextStringItem(AntextStringItemType.PhoneNumber, match.Index, match.Value, (phoneUtils.Format(parsedPhone, PhoneNumberFormat.INTERNATIONAL))));
                     }
                 }
+
+                //if (matches.Success)
+                //{
+                //    foreach (Capture match in matches.Captures)
+                //    {
+                //        // Replace spaces or hypens if any
+                //        string fix = match.Value.Replace(" ", "").Replace("-", "");
+
+                //        // If revised's string length match possible phone number length, try to fix it
+                //        if (fix.Length > 8 && fix.Length < 30)
+                //        {
+                //            PhoneNumber parsedPhone = phoneUtils.Parse(fix, defaultRegion);
+                //            foundItems.Add(new AntextStringItem(AntextStringItemType.PhoneNumber, match.Index, match.Value, (phoneUtils.Format(parsedPhone, PhoneNumberFormat.INTERNATIONAL))));
+                //        }
+                //    }
+                //}
             }
 
 

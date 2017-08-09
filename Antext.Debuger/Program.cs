@@ -9,10 +9,13 @@ namespace Antext.Debuger
         static void Main(string[] args)
         {
             // Prepare text to be analysed
-            string textToAnalyse = "Im selling Ford Focus combi, 1999,. If you want, call 777888999 or SenDmEMail@gmail.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php.";
+            string textToAnalyse = "Im selling Ford Focus combi, 1999,. If you want, call 777888999 or 313313313 or SenDmEMail@gmail.com. Alternatively myMail@google.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php. <script>alert('hi');</script>";
 
             // Create new instance of Antexter
             Antexter antexter = new Antexter();
+
+            // Add HtmlTag for html tags analysis (following line will remove html tags)
+            antexter.AddAnalyzer(new AntextAnalyzer<HtmlTagAntextPlugin>(true));
 
             // Add EmailAntextPlugin for email analysis
             antexter.AddAnalyzer(new AntextAnalyzer<EmailAntextPlugin>(true)); 

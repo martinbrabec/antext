@@ -15,20 +15,31 @@ namespace Antext.Plugins
             List<AntextStringItem> foundItems = new List<AntextStringItem>();
 
             // This should match any email separated by @ or (at)
-            var matches = Regex.Match(originalText, emailRegexPattern);
-            if (matches.Success)
+            var matches = Regex.Matches(originalText, emailRegexPattern);
+            foreach (Match match in matches)
             {
-                foreach (Capture match in matches.Captures)
-                {
-                    string email = match.Value.Replace("(at)", "@").ToLower();
+                string email = match.Value.Replace("(at)", "@").ToLower();
 
-                    // If revised's string length match possible phone number length, try to fix it
-                    if (email.Length > 4 && email.Length < 255)
-                    {
-                        foundItems.Add(new AntextStringItem(AntextStringItemType.Email, match.Index, match.Value, email));
-                    }
+                // If revised's string length match possible phone number length, try to fix it
+                if (email.Length > 4 && email.Length < 255)
+                {
+                    foundItems.Add(new AntextStringItem(AntextStringItemType.Email, match.Index, match.Value, email));
                 }
             }
+
+            //if (matches.Success)
+            //{
+            //    foreach (Capture match in matches.Captures)
+            //    {
+            //        string email = match.Value.Replace("(at)", "@").ToLower();
+
+            //        // If revised's string length match possible phone number length, try to fix it
+            //        if (email.Length > 4 && email.Length < 255)
+            //        {
+            //            foundItems.Add(new AntextStringItem(AntextStringItemType.Email, match.Index, match.Value, email));
+            //        }
+            //    }
+            //}
 
             return foundItems;
         }
