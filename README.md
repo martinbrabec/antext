@@ -1,4 +1,7 @@
-# antext
+# antext - BETA
+
+WARNING - Please, keep in mind that Antext is still in development and some stable version will be available later this year. First stable version will have major version 1 (1.x.x.x). 
+
 Antext is simple c# text analizer library, which can find phone numbers (by default Czech Republic), emails and links in text. It can also replace them with fixed value. Phone number search uses libphonenumber and regex. Email and link analyzer uses just regex. 
 
 # instalation
