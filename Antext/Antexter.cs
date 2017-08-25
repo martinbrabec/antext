@@ -37,6 +37,8 @@ namespace Antext
             outputAntex.OriginalText = originalText;
             outputAntex.RevisedText = outputAntex.OriginalText;
 
+            if (originalText == null)
+                return outputAntex;
 
             foreach (var analyzeService in analyzeServices)
             {
