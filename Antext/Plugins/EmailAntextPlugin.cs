@@ -8,7 +8,7 @@ namespace Antext.Plugins
     {
         public AntextStringItemType Type { get { return AntextStringItemType.Email;} }
 
-        private string emailRegexPattern = "(\\w+|[-+.])+(@|\\(at\\))((\\w|[.-])+(\\.\\w{2,10}){1})";
+        private string emailRegexPattern = "((?:[-+.\\w])+)(@|\\(at\\))(((?:\\w|[.-])+)(\\.\\w{2,10}))";
 
         public List<AntextStringItem> Analyze(string originalText)
         {

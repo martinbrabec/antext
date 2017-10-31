@@ -10,6 +10,8 @@ namespace Antext.Debuger
         {
             // Prepare text to be analysed
             string textToAnalyse = "Im selling Ford Focus combi, 1999,. If you want, call 777888999 or 313313313 or SenDmEMail@gmail.com. Alternatively myMail@google.com. More photos on https://greatestcars.com/ad/77860320/Ford-FOCUS-ST-20-ST-250ps.php. <script>alert('hi');</script>";
+            textToAnalyse =
+                "Rakovník  Malse Roudne Canlı İzle #Link:  http://www.macekranitv.com/2017/10/rakovnik-malse-roudne-canli-izle/  (Yayın maç saatinde eklenecektir) #maçizle #maçlinkleri";
 
             // Create new instance of Antexter
             Antexter antexter = new Antexter();
